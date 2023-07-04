@@ -24,7 +24,6 @@ const receibeMessage = (req, res) => {
     const { value: { messages } } = entry['changes'][0]
 
     if (messages != undefined) {
-      console.log(messages, ' ------> messages');
       const txt = getText(messages[0])
       const number = messages[0]['from']
 
