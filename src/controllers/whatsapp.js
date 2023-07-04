@@ -31,10 +31,10 @@ const receibeMessage = (req, res) => {
       sendMessage(`El usuario dijo: ${txt}`, number)
     }
 
-    res.status(400).send('EVENT_RECEIVED')
+    res.send('EVENT_RECEIVED')
   } catch (e) {
     console.log(e);
-    res.status(400).send('EVENT_RECEIVED')
+    res.send('EVENT_RECEIVED')
   }
 }
 
