@@ -20,7 +20,7 @@ const sendMessage = async (message, number) => {
     }
 
     const rs = await axios.post(url, body, options)
-    console.log('Axios res ---> ', rs);
+    console.log('Axios res ---> ', rs.data);
   } catch (e) {
     console.log(e);
   }
