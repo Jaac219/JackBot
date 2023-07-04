@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 const verifyToken = (req, res) => {
   try {
     const accessToken = "AJSDLFJASLDFASJDFLAKSFD"
@@ -14,7 +16,13 @@ const verifyToken = (req, res) => {
 }
 
 const receibeMessage = (req, res) => {
-  res.send('receibe Message')
+  try {
+    const entry = req.body['entry'][0]
+    const { value: { messages } } = req.body['changes'][0]
+
+  } catch (e) {
+    res.status(400).send('EVENT_RECEIVED')
+  }
 
 }
 
