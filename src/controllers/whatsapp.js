@@ -1,4 +1,5 @@
 const fs = require('fs')
+const myConsole = new console.Console(fs.createReadStream('./logs.txt'))
 
 const verifyToken = (req, res) => {
   try {
@@ -18,12 +19,16 @@ const verifyToken = (req, res) => {
 const receibeMessage = (req, res) => {
   try {
     const entry = req.body['entry'][0]
-    const { value: { messages } } = req.body['changes'][0]
+    const { value: { messages } } = entry['changes'][0]
 
+    console.log(messages)
+    myConsole.log(messages)
+
+    res.status(400).send('EVENT_RECEIVED')
   } catch (e) {
+    console.log(e);
     res.status(400).send('EVENT_RECEIVED')
   }
-
 }
 
 module.exports = {
