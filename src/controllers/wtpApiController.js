@@ -1,15 +1,14 @@
 const { text } = require('express')
 const fs = require('fs')
-const { sendMessage } = require('../services/whatsapp')
+const { sendWtpApiMessage } = require('../services/wtpApiService')
 // const myConsole = new console.Console(fs.createReadStream('./logs.txt'))
 
+// Endpoint habilitado para que meta se pueda sincronizar con mi app
 const verifyToken = (req, res) => {
   try {
     const accessToken = "AJSDLFJASLDFASJDFLAKSFD"
     const token = req.query['hub.verify_token']
     const challenge = req.query['hub.challenge']
-
-    console.log(accessToken, token, challenge)
 
     if(challenge && token === accessToken) res.send(challenge)
     else res.status(400).send()
@@ -37,6 +36,16 @@ const receibeMessage = (req, res) => {
   }
 }
 
+const sendMessage = async (req, res) => {
+  try {
+    const { message, number } = req.body
+    const { data } = await sendWtpApiMessage(message, number)
+    res.json(data)
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 const getText = (messages) => {
   const type = messages['type']
   let txt = ''
@@ -60,5 +69,6 @@ const getText = (messages) => {
 
 module.exports = {
   verifyToken,
-  receibeMessage
+  receibeMessage,
+  sendMessage
 }

@@ -1,8 +1,11 @@
 const axios = require('axios')
 const { WHATSAPP_META_URL: url, WHATSAPP_META_TOKEN: token } = process.env
 
-const sendMessage = async (message, number) => {
+const sendWtpApiMessage = async (message, number) => {
   try {
+
+    // Esta pendiente crear templates para manejar tipos
+    // y cuerpo de los mensajes
     const body = {
       'messaging_product': 'whatsapp',
       'to': number,
@@ -19,13 +22,12 @@ const sendMessage = async (message, number) => {
       }
     }
 
-    const rs = await axios.post(url, body, options)
-    console.log('Axios res ---> ', rs.data);
+    return await axios.post(url, body, options)
   } catch (e) {
     console.log(e);
   }
 }
 
 module.exports = {
-  sendMessage
+  sendWtpApiMessage
 }

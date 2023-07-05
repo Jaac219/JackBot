@@ -167,4 +167,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Whatsapp web session storage
+.wwebjs_cache/
+storage/
+
 # End of https://www.toptal.com/developers/gitignore/api/node,windows
