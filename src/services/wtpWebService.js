@@ -1,13 +1,13 @@
 const { Client, LocalAuth, RemoteAuth } = require('whatsapp-web.js')
 const { MongoStore } = require('wwebjs-mongo')
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 
 const data = [
   { id: '1234' },
   { id: '9876' }
 ]
 
-const store = new MongoStore({ mongoose: mongoose })
+// const store = new MongoStore({ mongoose: mongoose })
 let wtpWebInstances = {}
 
 class WtpWebService {
