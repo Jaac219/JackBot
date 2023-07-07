@@ -1,42 +1,34 @@
-const WtpWebService = require('../services/wtpWebService')
-const { getWtpWebInstance } = require('../services/wtpWebService')
-
-const instances = getWtpWebInstance()
-// const clients = Object.keys(instances)
-
-// if (clients.length > 0) {
-//   console.log('------> Intoooo')
-//   clients.forEach((cl) => {
-//     // Definir la acción para manejar los mensajes entrantes
-//     instances[cl].handleMessage(message => {
-//       console.log('Nuevo mensaje recibido:', message.body)
-
-//       if (message.body === 'ping') {
-//         message.reply('pong')
-//       } else {
-//         message.reply('Lo siento, no entiendo ese comando.')
-//       }
-//     })
-//   })
-// }
+const { whatsappInstances: instances, bots } = require('./chatBotController')
 
 const getWtpQrSession = (req, res) => {
   try {
-    const { id } = req.session
-    const qr = instances['9876'].getQRCode()
-    console.log(qr)
+    const { botId } = req.body
+    const { _id } = req.session
+
+    if (!bots.some((vl)=>vl.userId==_id && vl._id == botId)) 
+      throw new Error('INVALID_BOT')
+
+    const qr = instances[botId].getQRCode()
     res.send(qr)
   } catch (e) {
-    console.log(e)
+    res.status(400).send(e.toString())
   }
 }
 
 const sendWtpWebMessage = (req, res) => {
   try {
-    instances['9876'].sendMessage(`573107464006@c.us`, 'hello from testing')
+    const { botId, number, message } = req.body
+    const { _id } = req.session
+
+    if (!bots.some((vl)=>vl.userId==_id && vl._id == botId)) 
+      throw new Error('INVALID_BOT')
+
+    if(!instances[botId].isReady) throw new Error('INSTANCE_ISNOT_READY')
+
+    instances[botId].sendMessage(`${number}@c.us`, message)
     res.send('ready')
   } catch (e) {
-    console.log(e);
+    res.status(400).send(e.toString())
   }
 }
 
