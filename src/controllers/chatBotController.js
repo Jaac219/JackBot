@@ -8,21 +8,21 @@ const bots = [
 const initPromp = { role: 'system', content: 'Quiero que actues como un vendedor de productos digitales presentate como jaackBot. Tu mision va a ser lograr hacer conversiones. Niegate a responder cualquier pregunta que no sea acerca de productos digitales. Nunca salgas de tu personaje. Crear el producto de manera ficticia y enviar sl siguiente link de compra explicitament: "http://www.google.com" para que el usuario realice la compra' }
 let context = []
 
-const whatsappInstances = {};
+const wtpWebInstances = {};
 // const instagramInstances = {}
 // const messengerInstances = {}
 
 (()=>{
   bots.forEach((bot) => {
-    whatsappInstances[bot._id] = new WtpWebService(bot._id)
-    whatsappInstances[bot._id].handleMessage(async (message) => {
+    wtpWebInstances[bot._id] = new WtpWebService(bot._id)
+    wtpWebInstances[bot._id].handleMessage(async (message) => {
 
       console.log('Nuevo mensaje recibido:', message.body)
 
-      whatsappInstances[bot._id].sendMessage(message.from, "Dame un momento por favor ...")
+      wtpWebInstances[bot._id].sendMessage(message.from, "Dame un momento por favor ...")
       const rs = await getGptResp(message.body)
 
-      whatsappInstances[bot._id].sendMessage(message.from, rs)
+      wtpWebInstances[bot._id].sendMessage(message.from, rs)
     })
   })
 })()
@@ -67,7 +67,7 @@ const gptTestMessage = async (req, res) => {
 }
 
 module.exports = {
-  whatsappInstances,
+  wtpWebInstances,
   bots,
   gptTestMessage
 }

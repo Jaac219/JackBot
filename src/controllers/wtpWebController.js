@@ -1,4 +1,4 @@
-const { whatsappInstances: instances, bots } = require('./chatBotController')
+const { wtpWebInstances: instances, bots } = require('./chatBotController')
 
 const getWtpQrSession = (req, res) => {
   try {
