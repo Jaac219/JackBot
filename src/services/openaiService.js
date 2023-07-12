@@ -1,4 +1,15 @@
 const axios = require('axios')
+// const { Configuration, OpenAIApi } = require('openai')
+
+// const configuration = new Configuration({
+//   apiKey: process.env.OPENIA_KEY
+// })
+// const openai = new OpenAIApi(configuration)
+
+// const response = await openai.createChatCompletion({
+//   model: 'gpt-3.5-turbo',
+//   messages
+// })
 
 const httpOptions = {
   headers: {
@@ -30,8 +41,7 @@ const getChatCompletion = async ({ messages, model }) => {
     const body = {
       model,
       messages,
-      temperature: 0.6
-      // max_tokens: 50,
+      temperature: 0.7
     }
 
     const response = await axios.post(url, body, httpOptions)

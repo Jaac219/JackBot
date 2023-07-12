@@ -1,6 +1,8 @@
 require('dotenv').config()
 const { connect } = require('mongoose')
 
+global['colors'] = require('colors')
+
 const db = process.env.MONGODB_URI
 
 connect(db).then(() => {

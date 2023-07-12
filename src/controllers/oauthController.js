@@ -30,8 +30,8 @@ const login = (req, res) => {
     
     res.status(200).json({ token })
   } catch (e) {
-    console.log(e)
-    res.status(400).json(e)
+    console.log(colors.red(e.message))
+    res.status(400).json(e.toString())
   }
 }
 

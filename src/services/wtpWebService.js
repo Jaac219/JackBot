@@ -1,13 +1,9 @@
 const { Client, LocalAuth, RemoteAuth } = require('whatsapp-web.js')
-
-const data = [
-  { id: '1234' },
-  { id: '9876' }
-]
 class WtpWebService {
   constructor(clientId) {
     this.qrCode = ''
     this.isReady = false
+    
 
     this.client = new Client({
       authStrategy: new LocalAuth({
