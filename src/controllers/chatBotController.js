@@ -51,6 +51,7 @@ const createGptConversation = async (message, historyId) => {
 
     return response
   } catch (e) {
+    chatHistory[historyId].pop()
     return Promise.reject(e)
   }
 }
