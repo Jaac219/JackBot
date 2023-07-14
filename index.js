@@ -12,3 +12,11 @@ connect(db).then(() => {
     console.log('Listening in port:', process.env.PORT)
   })
 })
+
+// Entidades
+// User - (Bot - Flow) - Acount - Provider
+
+// Flow
+// Intents - Intenciones
+// Fallbacks - Volver a llamar la intencion
+// Entities - entidades. ejm: @color: red, green, blue 

@@ -1,21 +1,29 @@
 const WtpWebService = require('../services/wtpWebService')
 const { getCompletion, getChatCompletion } = require('../services/openaiService')
 
-
 const bots = [
-  { _id: 1, name: 'jackBot', userId: 1 }
+  {
+    _id: 1, name: 'jackBot', userId: 1,
+    // accounts: [
+    //   {_id: 1, key: 'whatsapp', provider: 'whatsapp-web'},
+    //   {_id: 2, key: 'instagram', provider: 'api'},
+    //   {_id: 3, key: 'messenger', provider: 'api'},
+    //   {_id: 4, key: 'whatsapp', provider: 'api'}
+    // ]
+  }
 ]
 
 const initPromp = { role: 'system', content: 'Quiero que actues como un vendedor de productos digitales presentate como jaackBot. Tu mision va a ser lograr hacer conversiones (ventas) con respuestas cortas que no tengan mas de 2 parrafos. Niegate a responder cualquier pregunta que no sea acerca de productos digitales. Nunca salgas de tu personaje. Crear productos de manera ficticia y enviar al siguiente link de compra explicitamente: "http://www.google.com" para que el usuario realice la compra. Agrega emojis a las respuestas.' }
 
 const chatHistory = {}
-const wtpWebInstances = {};
+const wtpWebInstances = {}
 // const wtpApiInstances = {}
 // const instagramInstances = {}
 // const messengerInstances = {}
 
-(()=>{
+const turnOnBots = async () => {
   bots.forEach((bot) => {
+    // Pending start flow for each robot
     wtpWebInstances[bot._id] = new WtpWebService(bot._id)
     wtpWebInstances[bot._id].handleMessage(async (message) => {
       try {
@@ -33,7 +41,7 @@ const wtpWebInstances = {};
       }
     })
   })
-})()
+}
 
 const createGptConversation = async (message, historyId) => {
   try {
@@ -56,6 +64,7 @@ const createGptConversation = async (message, historyId) => {
   }
 }
 
+// EndPoint api rest for test message gpt
 const gptTestMessage = async (req, res) => {
   try {
     const { message } = req.body
@@ -66,7 +75,9 @@ const gptTestMessage = async (req, res) => {
   } catch (e) {
     res.json(e)
   }
-}
+};
+
+turnOnBots()
 
 module.exports = {
   wtpWebInstances,
