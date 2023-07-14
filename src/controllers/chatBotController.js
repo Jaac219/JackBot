@@ -33,7 +33,8 @@ const turnOnBots = async () => {
         const chat = await client.getChatById(message.from)
         await chat.sendStateTyping()
         
-        const response = await createGptConversation(message.body, message.from)
+        const response = '' 
+        // response = await createGptConversation(message.body, message.from)
         client.sendMessage(message.from, response)
       } catch (e) {
         console.log(colors.red(e.message))
