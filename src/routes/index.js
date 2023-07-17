@@ -15,7 +15,8 @@ const { verifyToken } = require('../middlewares/oauth')
 /**
  * Import Controllers
  */
-const { login } = require('../controllers/oauthController')
+const { login } = require('../controllers/oauthController');
+const { process } = require('../controllers/flowController')
 
 /**
  * Define SubRoutes
@@ -23,5 +24,6 @@ const { login } = require('../controllers/oauthController')
 router.use('/wtpApi', [verifyToken], wtpApiRoutes)
 router.use('/wtpWeb', [verifyToken], wtpWebRoutes)
 router.post('/login', login)
+router.post('/chat/test/flow/nlp', process)
 
 module.exports = router

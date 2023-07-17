@@ -78,7 +78,7 @@ const gptTestMessage = async (req, res) => {
   }
 };
 
-turnOnBots()
+// turnOnBots()
 
 module.exports = {
   wtpWebInstances,

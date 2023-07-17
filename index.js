@@ -19,4 +19,4 @@ connect(db).then(() => {
 // Flow
 // Intents - Intenciones
 // Fallbacks - Volver a llamar la intencion
-// Entities - entidades. ejm: @color: red, green, blue 
+// Entities - entidades. ejm: @color: red, green, blue
