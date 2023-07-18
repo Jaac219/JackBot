@@ -1,9 +1,9 @@
 const { NlpManager } = require('node-nlp');
-
 const manager = new NlpManager({ languages: ['es'], forceNER: true });
+const { getCompletion, getChatCompletion } = require('../services/openaiService')
 
 // Intenciones de saludo
-manager.addDocument('es', 'Hola', 'greetings.hello.general');
+manager.addDocument('es', 'Hola {product}', 'greetings.hello.general');
 manager.addDocument('es', 'Buenos días', 'greetings.hello.general');
 manager.addDocument('es', 'Buenas tardes', 'greetings.hello.general');
 manager.addDocument('es', 'Buenas noches', 'greetings.hello.general');
@@ -25,17 +25,17 @@ manager.addDocument('es', 'Hola, ¿hay alguien ahí?', 'greetings.hello.general'
 
 // Intenciones de consulta de productos
 manager.addDocument('es', '¿Tienen disponible cursos {{product}}?', 'query.product');
-// manager.addDocument('es', '¿Cuáles son las características del producto {{product}}?', 'query.product');
-// manager.addDocument('es', 'Necesito información sobre el producto XYZ', 'query.product');
-// manager.addDocument('es', 'Dime más sobre el producto XYZ', 'query.product');
-// manager.addDocument('es', 'Quiero conocer las especificaciones del producto XYZ', 'query.product');
-// manager.addDocument('es', '¿Qué puedes decirme sobre el producto XYZ?', 'query.product');
-// manager.addDocument('es', 'Me gustaría obtener detalles sobre el producto XYZ', 'query.product');
-// manager.addDocument('es', '¿Dónde puedo encontrar información sobre el producto XYZ?', 'query.product');
-// manager.addDocument('es', 'Quiero conocer las opiniones de los clientes sobre el producto XYZ', 'query.product');
-// manager.addDocument('es', '¿Cuál es la disponibilidad del producto modelo XYZ?', 'query.product');
-// manager.addDocument('es', 'Busco información mas amplia del producto XYZ', 'query.product');
-// manager.addDocument('es', '¿Puedes decirme las caracteristicas principales del producto XYZ?', 'query.product');
+manager.addDocument('es', '¿Cuáles son las características del producto {{product}}?', 'query.product');
+manager.addDocument('es', 'Necesito información sobre el producto XYZ', 'query.product');
+manager.addDocument('es', 'Dime más sobre el producto XYZ', 'query.product');
+manager.addDocument('es', 'Quiero conocer las especificaciones del producto XYZ', 'query.product');
+manager.addDocument('es', '¿Qué puedes decirme sobre el producto XYZ?', 'query.product');
+manager.addDocument('es', 'Me gustaría obtener detalles sobre el producto XYZ', 'query.product');
+manager.addDocument('es', '¿Dónde puedo encontrar información sobre el producto XYZ?', 'query.product');
+manager.addDocument('es', 'Quiero conocer las opiniones de los clientes sobre el producto XYZ', 'query.product');
+manager.addDocument('es', '¿Cuál es la disponibilidad del producto modelo XYZ?', 'query.product');
+manager.addDocument('es', 'Busco información mas amplia del producto XYZ', 'query.product');
+manager.addDocument('es', '¿Puedes decirme las caracteristicas principales del producto XYZ?', 'query.product');
 
 // Intenciones para Recomendación de productos
 manager.addDocument('es', '¿Puedes recomendarme algún producto similar al modelo XYZ?', 'recommendation.product');
@@ -96,28 +96,44 @@ manager.addDocument('es', 'Nos vemos', 'greetings.bye');
 manager.addDocument('es', 'Hasta la próxima', 'greetings.bye');
 manager.addDocument('es', 'Que tengas un buen día', 'greetings.bye');
 
+
+// Entities
+manager.addNamedEntityText('product', 'course-marketing', ['es'], ['curso de marketing'] )
+manager.addNamedEntityText('product', 'course-finances', ['es'], ['curso de finanzas'] )
+manager.addNamedEntityText('product', 'ebook-finances', ['es'], ['ebook finanzas personales', 'libros de finanzas personales'] )
+manager.addNamedEntityText('product', 'ebook-cake-shop', ['es'], ['ebook panaderia'] )
+manager.addNamedEntityText('product', 'insta-sales', ['es'], ['pack ventas por instagram'] )
+
 // manager.addDocument('es', '¿Cuanto es el resultado de la suma de {{a}} + {{b}}?', 'sum');
 // manager.addDocument('es', 'mas {{c}}', 'sum');
 
 // Train also the NLG
-manager.addAnswer('es', 'greetings.hello.general', '---->');
+manager.addAnswer('es', 'greetings.hello.general', '');
 manager.addAnswer('es', 'query.product', 'respuesta ---->');
 
 manager.train();
 
 const process = async (req, res) => {
-  const { message } = req.body;
-  // const activity = {
-  //   conversation: {
-  //     id: 'a1'
-  //   }
-  // };
-  console.time('tm');
-    const rs = await manager.process('es', message);
-    console.log(rs);
-  console.timeEnd('tm');
-
-  res.json(rs);
+  try {
+    const { message } = req.body;
+    // manager.load()
+    const process = await manager.process('es', message);
+  
+    let rs = ''
+    if(process.intent == 'greetings.hello.general') {
+      rs = await getChatCompletion({
+        model: 'gpt-3.5-turbo',
+        messages: [
+          {role: 'system', content: 'Eres un vendedor de infoproductos y el cliente te esta saludando dale una respuesta con emojis'},
+          {role: 'user', content: process.utterance}
+        ]
+      })
+    }
+  
+    res.send(rs);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 module.exports = {
