@@ -173,3 +173,6 @@ storage/
 
 # End of https://www.toptal.com/developers/gitignore/api/node,windows
 nohup.out
+
+# Config enviroments
+devkey.js

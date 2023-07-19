@@ -35,13 +35,13 @@ const getCompletion = async ({ prompt, model }) => {
   }
 }
 
-const getChatCompletion = async ({ messages, model }) => {
+const getChatCompletion = async ({ messages, model = 'gpt-3.5-turbo' }) => {
   try {
     const url = 'https://api.openai.com/v1/chat/completions'
     const body = {
       model,
       messages,
-      temperature: 0.7
+      temperature: 1
     }
 
     const response = await axios.post(url, body, httpOptions)

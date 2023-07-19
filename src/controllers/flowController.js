@@ -1,11 +1,10 @@
-const { NlpManager, ConversationContext } = require('node-nlp');
+const { NlpManager } = require('node-nlp');
 const { getChatCompletion } = require('../services/openaiService');
 
 const path = require('path');
 const fs = require('fs');
 
 const manager = new NlpManager({ languages: ['es'], forceNER: true });
-const context = new ConversationContext();
 
 const rutaArchivoJson = path.join(__dirname, '..', 'data', 'infoProducts.json');
 const products = JSON.parse(fs.readFileSync(rutaArchivoJson, 'utf8'));
@@ -51,9 +50,52 @@ manager.addDocument('es', 'Hola, ¿cómo funciona esto?', 'greeting');
 manager.addDocument('es', '¡Hola! ¿Alguien puede atenderme?', 'greeting');
 manager.addDocument('es', 'Hola, necesito asistencia técnica', 'greeting');
 manager.addDocument('es', 'Hola, ¿hay alguien ahí?', 'greeting');
+manager.addDocument('es', 'Hola, necesito asistencia', 'greeting');
+manager.addDocument('es', 'Hola, requiero ayuda', 'greeting');
+manager.addDocument('es', 'Hola, busco información', 'greeting');
+manager.addDocument('es', 'Hola, ¿puedes responder algunas preguntas?', 'greeting');
+manager.addDocument('es', 'Hola, tengo algunas dudas', 'greeting');
+manager.addDocument('es', 'Hola, ¿hay alguien disponible para atenderme?', 'greeting');
+manager.addDocument('es', 'Hola, ¿puedes brindarme asesoría?', 'greeting');
+manager.addDocument('es', 'Hola, necesito resolver un problema', 'greeting');
+manager.addDocument('es', 'Hola, ¿me puedes orientar?', 'greeting');
+manager.addDocument('es', 'Hola, estoy buscando ayuda técnica', 'greeting');
+manager.addDocument('es', 'Hola, ¿me puedes asistir?', 'greeting');
+manager.addDocument('es', 'Hola, ¿hay alguien que pueda atender mi consulta?', 'greeting');
+manager.addDocument('es', 'Hola, necesito hablar con un representante', 'greeting');
+manager.addDocument('es', 'Hola, ¿puedes darme más información?', 'greeting');
+manager.addDocument('es', 'Hola, ¿me puedes guiar?', 'greeting');
+manager.addDocument('es', 'Hola, necesito realizar una solicitud', 'greeting');
+manager.addDocument('es', 'Hola, ¿puedes resolver mi inquietud?', 'greeting');
+manager.addDocument('es', 'Hola, necesito hacer una pregunta', 'greeting');
+manager.addDocument('es', 'Hola, ¿me puedes explicar cómo funciona?', 'greeting');
+manager.addDocument('es', 'Buen día', 'greeting');
+manager.addDocument('es', '¿Cómo estás?', 'greeting');
+manager.addDocument('es', 'Qué gusto verte', 'greeting');
+manager.addDocument('es', 'Un placer saludarte', 'greeting');
+manager.addDocument('es', '¡Feliz día!', 'greeting');
+manager.addDocument('es', '¿Qué tal?', 'greeting');
+manager.addDocument('es', 'Hola, buenos días', 'greeting');
+manager.addDocument('es', 'Espero que estés bien', 'greeting');
+manager.addDocument('es', 'Saludos cordiales', 'greeting');
+manager.addDocument('es', '¡Buenas!', 'greeting');
+manager.addDocument('es', '¡Hola de nuevo!', 'greeting');
+manager.addDocument('es', '¿Cómo te va?', 'greeting');
+manager.addDocument('es', 'Es un placer estar aquí', 'greeting');
+manager.addDocument('es', 'Que tengas un excelente día', 'greeting');
+manager.addDocument('es', 'Espero que hayas tenido un buen fin de semana', 'greeting');
+manager.addDocument('es', 'Deseándote un buen comienzo de semana', 'greeting');
+manager.addDocument('es', '¡Hola! ¿Cómo puedo ayudarte hoy?', 'greeting');
+manager.addDocument('es', '¡Hola! ¿Qué te trae por aquí?', 'greeting');
+manager.addDocument('es', '¿En qué puedo servirte hoy?', 'greeting');
+manager.addDocument('es', 'Buenas tardes', 'greeting');
+manager.addDocument('es', 'Buenas noches', 'greeting');
+manager.addDocument('es', 'Buenos dias', 'greeting');
+manager.addDocument('es', 'Que tal', 'greeting');
 
 // Intenciones de consulta de productos
-manager.addDocument('es', '¿Tienen disponible cursos %product%?', 'query.product');
+manager.addDocument('es', '%product%', 'query.product');
+manager.addDocument('es', '¿Tienen disponible cursos de {product}?', 'query.product');
 manager.addDocument('es', '¿Cuáles son las características del producto %product%?', 'query.product');
 manager.addDocument('es', 'Necesito información sobre el producto %product%', 'query.product');
 manager.addDocument('es', 'Dime más sobre el producto %product%', 'query.product');
@@ -65,6 +107,7 @@ manager.addDocument('es', 'Quiero conocer las opiniones de los clientes sobre el
 manager.addDocument('es', '¿Cuál es la disponibilidad del producto modelo %product%?', 'query.product');
 manager.addDocument('es', 'Busco información mas amplia del producto %product%', 'query.product');
 manager.addDocument('es', '¿Puedes decirme las caracteristicas principales del producto %product%?', 'query.product');
+
 
 // Intenciones para Recomendación de productos
 manager.addDocument('es', '¿Puedes recomendarme algún producto similar al modelo %product%?', 'recommendation.product');
@@ -103,6 +146,17 @@ manager.addDocument('es', 'Hasta luego', 'farewell');
 manager.addDocument('es', 'Nos vemos', 'farewell');
 manager.addDocument('es', 'Hasta la próxima', 'farewell');
 manager.addDocument('es', 'Que tengas un buen día', 'farewell');
+manager.addDocument('es', 'Chao', 'farewell');
+manager.addDocument('es', 'Chauu', 'farewell');
+
+// Intenciones de Confirmacion
+manager.addDocument('es', 'Si', 'afirmation');
+manager.addDocument('es', 'Si, por favor', 'afirmation');
+manager.addDocument('es', 'Afirmativo', 'afirmation');
+manager.addDocument('es', 'Afirmacion', 'afirmation');
+manager.addDocument('es', 'Me parece bien', 'afirmation');
+manager.addDocument('es', 'Estoy de acuerdo', 'afirmation');
+manager.addDocument('es', 'Por favor', 'afirmation');
 
 // Entities
 manager.addNamedEntityText('product', 'ebook-mini-donas', ['es'], ['Ebook de mini donas'] )
@@ -119,75 +173,52 @@ manager.addNamedEntityText('product', 'pack-estimulacion-lenguaje', ['es'], ['Pa
 manager.addNamedEntityText('product', 'curso-ventas-redes', ['es'], ['Curso de ventas por facebook', 'Curso de ventas por instagram', 'Curso de ventas por redes'] )
 manager.addNamedEntityText('product', 'curso-maquillaje-profesional', ['es'], ['Curso de maquillaje profesional'] )
 
-const initPromp = { role: 'system', content: `Quiero que actues como vendedor de productos digitales enfocados en como ganar dinero extra o mejorar las finanzas personales. Presentate como jaackBot. Tu mision va a ser lograr hacer conversiones (ventas) con respuestas cortas. Nunca salgas de tu personaje. Agrega emojis a las respuestas.` }
-const chatHistory = {}
+const initPrompGpt = { role: 'system', content: `Quiero que actues como vendedor de productos digitales enfocados en como ganar dinero extra o mejorar las finanzas personales. Presentate como jaackBot. Tu mision va a ser lograr hacer conversiones (ventas) con respuestas cortas. Nunca salgas de tu personaje. Agrega emojis a las respuestas.` }
+const context = {}
 
 // Train also the NLG
 manager.addAnswer('es', 'greeting', async ({utterance, from})=>{
-  if(!chatHistory[from]) chatHistory[from] = [initPromp]
-  if(chatHistory[from].length > 10 ) chatHistory[from].splice(1, 2)
-
-  chatHistory[from].push({role: 'user', content: utterance})
-
-  const response = await getChatCompletion({
-    model: 'gpt-3.5-turbo',
-    messages: chatHistory[from]
-  })
-
-  chatHistory[from].push({role: 'system', content: response})
-
-  return response
+  const messages = [initPrompGpt,{ role: 'system', content: 'Saluda al cliente y preguntale en que producto esta interesado.' }]
+  return await getChatCompletion({ messages })
+})
+manager.addAnswer('es', 'farewell', async ({utterance})=>{
+  const messages = [initPrompGpt,{ role: 'system', content: 'El cliente se esta despidiendo, dale una despedida amable' }, { role: 'user', content: utterance }]
+  return await getChatCompletion({ messages })
 });
 
 manager.addAnswer('es', 'query.product', async ({utterance, entities, from})=>{
-  if(!chatHistory[from]) chatHistory[from] = [initPromp]
-  if(chatHistory[from].length > 10 ) chatHistory[from].splice(1, 2)
+  const messages = [initPrompGpt]
+  context.intent = 'query.product'
 
-  let response = ''
   if(entities.length > 0) {
-    const product = products.find((val)=>val.key == entities[0].option)
+    const product = products.find((val)=>val.key == entities[0]?.option)
+    context.entities = entities
 
-    chatHistory[from].push(
-      {role: 'system', content: `El cliente esta pidiendo informacion del producto ${product} convencelo de que este producto es la mejor opcion de compra. Envía el siguiente enlace tal como lo he proporcionado y sin cambiarlo por ningún otro texto: ${product.sales_page}`},
-      {role: 'user', content: utterance}
-    )
-
-    response = await getChatCompletion({
-      model: 'gpt-3.5-turbo',
-      messages: chatHistory[from]
-    })
+    messages.push({role: 'system', content: `El cliente esta pidiendo informacion del producto ${product} convencelo de que este producto es la mejor opcion de compra. Envía el siguiente enlace tal como lo he proporcionado y sin cambiarlo por ningún otro texto: ${product.sales_page}`})
   } else {
     let pr = products.map((val)=>`${val.id}. ${val.name}`)
     pr = pr.join('\n')
-
-    chatHistory[from].push(
-      {role: 'system', content: `El cliente está solicitando un producto que no existe. A continuación. Por favor, muestrale solamente estos productos: ${pr}`},
-      {role: 'user', content: utterance}
-    )
-    response = await getChatCompletion({
-      model: 'gpt-3.5-turbo',
-      messages: chatHistory[from]
-    })
+    messages.push({role: 'system', content: `El cliente está solicitando un producto que no existe. Envía la siguiente lista de productos tal cual te lo estoy enviando ${pr}`})
   }
-  
-  chatHistory[from].push({role: 'system', content: response})
-  return response
+
+
+  messages.push({role: 'user', content: utterance})
+  return await getChatCompletion({ messages })
 });
 
-manager.addAnswer('es', 'farewell', async ({utterance})=>{
-  if(!chatHistory[from]) chatHistory[from] = [initPromp]
-  if(chatHistory[from].length > 10 ) chatHistory[from].splice(1, 2)
+manager.addAnswer('es', 'afirmation', async ({})=>{
+  const {intent, entities} = context
 
-  chatHistory[from].push({role: 'user', content: utterance})
-
-  const response = await getChatCompletion({
-    model: 'gpt-3.5-turbo',
-    messages: chatHistory[from]
-  })
-
-  chatHistory[from] = []
-  return response
-});
+  if(intent == 'query.product'){
+    if(entities && entities.length > 0){
+      const product = products.find((val)=>val.key == entities[0].option)
+      return `💸 Todo lo que necesitas saber sobre este producto lo podras encontrar en el siguiente enlace: ${product.sales_page}, 🚀 no te arrepentiras`
+    }else{
+      let pr = products.map((val)=>`${val.id}. ${val.name}: ${val.product_page}`)
+      return pr.join('\n')
+    }
+  }
+})
 
 manager.train()
 
@@ -196,10 +227,10 @@ const process = async (req, res) => {
     const { message, extraData } = req.body;
     const { from } = extraData;
 
-    const process = await manager.process('es', message, context);
+    const process = await manager.process('es', message);
     const { utterance, entities } = process;
 
-    console.log(process, '\n');
+    console.log('\n', process, '\n');
 
     const rs = typeof process.answer == 'function' ?
       await process.answer({ utterance, entities, from }) : 
