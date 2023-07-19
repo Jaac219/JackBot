@@ -1,0 +1,135 @@
+[
+  {
+    "id": 1,
+    "key": "ebook-mini-donas",
+    "name": "E-book  MINI DONAS desde casa.",
+    "description": "Emprende con MINI DONAS desde casa. E-book",
+    "price": "29,99 USD",
+    "sales_page": "https://go.hotmart.com/E84916907F",
+    "product_page": "https://go.hotmart.com/E84916907F?dp=1",
+    "checkout": "https://go.hotmart.com/E84916907F?ap=8103",
+    "checkout_ofering": "https://go.hotmart.com/E84916907F?ap=1def",
+    "checkout_orderbump": "https://go.hotmart.com/E84916907F?ap=adc6"
+  },
+  {
+    "id": 2,
+    "key": "ebook-amigurumis-crochet",
+    "name": "E-book +200 Patrones de Amigurumis Paso a Paso a Crochet",
+    "description": "Ebook +200 Patrones de Amigurumis Paso a Paso a Crochetq",
+    "price": "9,99 USD",
+    "sales_page": "https://go.hotmart.com/N84916917Q",
+    "product_page": "https://go.hotmart.com/N84916917Q?dp=1",
+    "checkout": "https://go.hotmart.com/N84916917Q?ap=8de8",
+    "checkout_ofering": "https://go.hotmart.com/N84916917Q?ap=699bQ"
+  },
+  {
+    "id": 3,
+    "key": "curso-excel",
+    "name": "Curso de Excel",
+    "description": "Excel Mega Curso",
+    "price": "5,99 USD",
+    "sales_page": "https://go.hotmart.com/S84916925P",
+    "product_page": "https://go.hotmart.com/S84916925P?dp=1",
+    "checkout": "https://go.hotmart.com/S84916925P?ap=18cc"
+  },
+  {
+    "id": 4,
+    "key": "curso-avisos-3d",
+    "name": "CURSO COMO FABRICAR AVISOS 3D EN ACRILICO",
+    "description": "CURSO COMO FABRICAR AVISOS 3D EN ACRILICO",
+    "price": "74 USD",
+    "sales_page": "https://go.hotmart.com/X84916934M",
+    "product_page": "https://go.hotmart.com/X84916934M?dp=1",
+    "checkout": "https://go.hotmart.com/X84916934M?ap=376e",
+    "checkout_ofering": "https://go.hotmart.com/X84916934M?ap=5cb0"
+  },
+  {
+    "id": 5,
+    "key": "curso-recetas-pizza",
+    "name": "CURSO DE PIZZAS Y RECETAS DE PIZZA",
+    "description": "CURSO DE PIZZAS, MAESTRO PIZZERO , LAS MEJORES RECETAS DE PIZZA + BONUS DE OBSEQUIO",
+    "price": "22 USD",
+    "sales_page": "https://go.hotmart.com/W84916974E",
+    "product_page": "https://go.hotmart.com/W84916974E?dp=1",
+    "checkout": "https://go.hotmart.com/W84916974E?ap=d3ed"
+  },
+  {
+    "id": 6,
+    "key": "curso-reposteria",
+    "name": "CURSO DE POSTRES, PASTELES Y TORTAS",
+    "description": "CURSO DE POSTRES ,PASTELES Y TORTAS",
+    "price": "22 USD",
+    "sales_page": "https://go.hotmart.com/F84916981W",
+    "product_page": "https://go.hotmart.com/F84916981W?dp=1",
+    "checkout": "https://go.hotmart.com/F84916981W?ap=62ba"
+  },
+  {
+    "id": 7,
+    "key": "curso-artesania",
+    "name": "CURSO DE ARTESANIA",
+    "description": "Quiero ser Artesano",
+    "price": "949 MXN",
+    "sales_page": "https://go.hotmart.com/R84916993P",
+    "product_page": "https://go.hotmart.com/R84916993P?dp=1Q",
+    "checkout": "https://go.hotmart.com/R84916993P?ap=3325"
+  },
+  {
+    "id": 8,
+    "key": "ebook-recetas-reposteria",
+    "name": "EBOOK | 100 RECETAS Y SECRETOS PARA CREAR POSTRES INCREÍBLES!",
+    "description": "EBOOK | 100 RECETAS Y SECRETOS PARA CREAR POSTRES INCREÍBLES!",
+    "price": "12 USD",
+    "sales_page": "https://go.hotmart.com/O84917059B",
+    "product_page": "https://go.hotmart.com/O84917059B?dp=1",
+    "checkout": "https://go.hotmart.com/O84917059B?ap=6742"
+  },
+  {
+    "id": 9,
+    "key": "curso-mochilas-wayuu",
+    "name": "Curso creacion de mochilas wayuu",
+    "description": "Crea tu mochila wayuu",
+    "price": "29,99 USD",
+    "sales_page": "https://go.hotmart.com/B84917001P",
+    "product_page": "https://go.hotmart.com/B84917001P?dp=1",
+    "checkout": "https://go.hotmart.com/B84917001P?ap=a691"
+  },
+  {
+    "id": 10,
+    "key": "curso-reposteria-avanzado",
+    "name": "CURSO DE REPOSTERIA CUPCAKES, CHEESECAKES Y MÁS..",
+    "description": "CURSO DE REPOSTERIA CUPCAKES, CHEESECAKES Y MÁS..",
+    "price": "22 USD",
+    "sales_page": "https://go.hotmart.com/M84917012O",
+    "product_page": "https://go.hotmart.com/M84917012O?dp=1",
+    "checkout": "https://go.hotmart.com/M84917012O?ap=2e25"
+  },
+  {
+    "id": 11,
+    "key": "pack-estimulacion-lenguaje",
+    "name": "PACK PROFESIONAL DE TERAPIA Y ESTIMULACION DE LENGUAJE",
+    "description": "PACK PROFESIONAL DE TERAPIA Y ESTIMULACION DE LENGUAJE",
+    "price": "24,99",
+    "sales_page": "https://go.hotmart.com/L84917021E",
+    "product_page": "https://go.hotmart.com/L84917021E?dp=1",
+    "checkout": "https://go.hotmart.com/L84917021E?ap=68c3"
+  },
+  {
+    "id": 12,
+    "key": "curso-ventas-redes",
+    "name": "Curso de ventas por Facebook e Instagram",
+    "description": "Vende con reels",
+    "price": "67 USD",
+    "sales_page": "https://go.hotmart.com/G84917026B",
+    "product_page": "https://go.hotmart.com/G84917026B?dp=1",
+    "checkout": "https://go.hotmart.com/G84917026B?ap=6082"
+  },
+  {
+    "id": 13,
+    "key": "curso-maquillaje-profesional",
+    "name": "Curso de Maquillaje Profesional + Aplicaciones",
+    "description": "Curso de Maquillaje Profesional + Aplicaciones",
+    "price": "6,9",
+    "sales_page": "https://go.hotmart.com/L84917050Y",
+    "product_page": "https://go.hotmart.com/L84917050Y?dp=1"
+  }
+]
