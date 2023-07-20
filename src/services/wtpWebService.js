@@ -1,4 +1,5 @@
 const { Client, LocalAuth, RemoteAuth } = require('whatsapp-web.js')
+const qrcodetr = require('qrcode-terminal');
 class WtpWebService {
   constructor(clientId) {
     this.qrCode = ''
@@ -17,7 +18,7 @@ class WtpWebService {
 
   init(clientId){
     this.client.on('qr', qr => {
-      console.log(qr);
+      qrcodetr.generate(qr, {small: true});
       this.qrCode = qr
     })
 
