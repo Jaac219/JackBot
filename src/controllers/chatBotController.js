@@ -1,5 +1,6 @@
 const WtpWebService = require('../services/wtpWebService')
 const { getCompletion, getChatCompletion } = require('../services/openaiService')
+const { process } = require('./flowController')
 
 const bots = [
   {
@@ -33,7 +34,8 @@ const turnOnBots = async () => {
         const chat = await client.getChatById(message.from)
         await chat.sendStateTyping()
         
-        const response = '' 
+        let response = ''
+        response = await process(message.body, message.from)
         // response = await createGptConversation(message.body, message.from)
         client.sendMessage(message.from, response)
       } catch (e) {
@@ -78,7 +80,7 @@ const gptTestMessage = async (req, res) => {
   }
 };
 
-// turnOnBots()
+turnOnBots()
 
 module.exports = {
   wtpWebInstances,

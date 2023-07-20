@@ -41,7 +41,7 @@ const getChatCompletion = async ({ messages, model = 'gpt-3.5-turbo' }) => {
     const body = {
       model,
       messages,
-      temperature: 1
+      temperature: 0.5
     }
 
     const response = await axios.post(url, body, httpOptions)
